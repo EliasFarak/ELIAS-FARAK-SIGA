@@ -1,0 +1,214 @@
+/* ============================================================
+   SIGA - Estilos del Módulo de Usuarios
+   GA7-220501096-AA3-EV01
+   Autor: Elías Farak - GRUPO 5
+   ============================================================ */
+
+/* Reset y fuente base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    background-color: #f4f6f9;
+    color: #333;
+}
+
+/* Encabezado */
+.encabezado {
+    background-color: #1a3a6b;
+    color: white;
+    padding: 16px 32px;
+    border-bottom: 4px solid #e8a020;
+}
+
+.encabezado h1 {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.encabezado p {
+    font-size: 12px;
+    opacity: 0.85;
+}
+
+/* Contenedor principal */
+.contenedor-principal {
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 0 20px;
+}
+
+/* Barra de acciones */
+.barra-acciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.barra-acciones h2 {
+    font-size: 18px;
+    color: #1a3a6b;
+}
+
+/* Botones generales */
+.boton-nuevo {
+    background-color: #1a3a6b;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.boton-nuevo:hover { background-color: #142d54; }
+
+.boton-volver, .boton-cancelar {
+    background-color: #6c757d;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.boton-volver:hover, .boton-cancelar:hover { background-color: #545b62; }
+
+/* Tabla de usuarios */
+.tabla-usuarios {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.tabla-usuarios thead {
+    background-color: #1a3a6b;
+    color: white;
+}
+
+.tabla-usuarios th {
+    padding: 12px 14px;
+    text-align: left;
+    font-size: 13px;
+}
+
+.tabla-usuarios td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 13px;
+}
+
+.tabla-usuarios tr:hover { background-color: #f8f9fa; }
+
+.sin-datos {
+    text-align: center;
+    color: #6c757d;
+    padding: 24px !important;
+}
+
+/* Etiquetas de rol */
+.rol-admin    { background-color: #dc3545; color: white; padding: 2px 8px; border-radius: 10px; font-size: 11px; }
+.rol-operador { background-color: #fd7e14; color: white; padding: 2px 8px; border-radius: 10px; font-size: 11px; }
+.rol-consulta { background-color: #6c757d; color: white; padding: 2px 8px; border-radius: 10px; font-size: 11px; }
+
+/* Etiquetas de estado */
+.estado-activo   { background-color: #28a745; color: white; padding: 2px 8px; border-radius: 10px; font-size: 11px; }
+.estado-inactivo { background-color: #dc3545; color: white; padding: 2px 8px; border-radius: 10px; font-size: 11px; }
+
+/* Botones de acción en tabla */
+.acciones { display: flex; gap: 6px; }
+
+.boton-editar {
+    background-color: #e8a020;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.boton-editar:hover { background-color: #c98a1a; }
+
+.boton-eliminar {
+    background-color: #dc3545;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.boton-eliminar:hover { background-color: #b02a37; }
+
+/* Formulario */
+.contenedor-formulario {
+    background-color: white;
+    padding: 28px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    max-width: 560px;
+}
+
+.campo-formulario {
+    margin-bottom: 16px;
+}
+
+.campo-formulario label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #1a3a6b;
+    font-size: 13px;
+}
+
+.campo-formulario input,
+.campo-formulario select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 13px;
+    outline: none;
+}
+
+.campo-formulario input:focus,
+.campo-formulario select:focus {
+    border-color: #1a3a6b;
+    box-shadow: 0 0 0 2px rgba(26,58,107,0.15);
+}
+
+.botones-formulario {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.boton-guardar {
+    background-color: #1a3a6b;
+    color: white;
+    padding: 9px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.boton-guardar:hover { background-color: #142d54; }
+
+/* Pie de página */
+.pie-pagina {
+    text-align: center;
+    padding: 16px;
+    margin-top: 32px;
+    color: #6c757d;
+    font-size: 12px;
+    border-top: 1px solid #dee2e6;
+}
