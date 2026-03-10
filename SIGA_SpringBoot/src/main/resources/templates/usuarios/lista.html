@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo}">Gestión de Usuarios - SIGA</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+    <!-- Encabezado del sistema -->
+    <header class="encabezado">
+        <h1>SIGA - Sistema Integrado de Gestión Administrativa</h1>
+        <p>Módulo de Gestión de Usuarios | SENA - ADSO - Ficha 3070323</p>
+    </header>
+
+    <main class="contenedor-principal">
+
+        <div class="barra-acciones">
+            <h2>Listado de Usuarios</h2>
+            <!-- Botón para registrar nuevo usuario -->
+            <a th:href="@{/usuarios/nuevo}" class="boton-nuevo">+ Nuevo Usuario</a>
+        </div>
+
+        <!-- Tabla de usuarios -->
+        <table class="tabla-usuarios">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo</th>
+                    <th>Rol</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterar sobre la lista de usuarios con Thymeleaf -->
+                <tr th:each="usuario : ${listaUsuarios}">
+                    <td th:text="${usuario.idUsuario}">1</td>
+                    <td th:text="${usuario.nombreUsuario}">Nombre</td>
+                    <td th:text="${usuario.apellidoUsuario}">Apellido</td>
+                    <td th:text="${usuario.correoUsuario}">correo@siga.com</td>
+                    <td>
+                        <span th:text="${usuario.rolUsuario}"
+                              th:classappend="${usuario.rolUsuario == 'ADMIN'} ? 'rol-admin' : (${usuario.rolUsuario == 'OPERADOR'} ? 'rol-operador' : 'rol-consulta')">
+                            ROL
+                        </span>
+                    </td>
+                    <td>
+                        <span th:text="${usuario.estadoUsuario}"
+                              th:classappend="${usuario.estadoUsuario == 'ACTIVO'} ? 'estado-activo' : 'estado-inactivo'">
+                            ESTADO
+                        </span>
+                    </td>
+                    <td class="acciones">
+                        <!-- Botón editar -->
+                        <a th:href="@{/usuarios/editar/{id}(id=${usuario.idUsuario})}"
+                           class="boton-editar">Editar</a>
+                        <!-- Botón eliminar con confirmación -->
+                        <a th:href="@{/usuarios/eliminar/{id}(id=${usuario.idUsuario})}"
+                           class="boton-eliminar"
+                           onclick="return confirm('¿Está seguro de eliminar este usuario?')">
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
+                <!-- Mensaje cuando no hay usuarios -->
+                <tr th:if="${#lists.isEmpty(listaUsuarios)}">
+                    <td colspan="7" class="sin-datos">No hay usuarios registrados en el sistema.</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </main>
+
+    <footer class="pie-pagina">
+        <p>SIGA v1.0 &copy; 2026 | Elías Farak - GRUPO 5| SENA ADSO</p>
+    </footer>
+
+</body>
+</html>

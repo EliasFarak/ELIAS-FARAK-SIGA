@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo}">Formulario Usuario - SIGA</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+    <!-- Encabezado del sistema -->
+    <header class="encabezado">
+        <h1>SIGA - Sistema Integrado de Gestión Administrativa</h1>
+        <p>Módulo de Gestión de Usuarios | SENA - ADSO - Ficha 3070323</p>
+    </header>
+
+    <main class="contenedor-principal">
+
+        <div class="barra-acciones">
+            <h2 th:text="${titulo}">Formulario de Usuario</h2>
+            <!-- Botón para volver a la lista -->
+            <a th:href="@{/usuarios}" class="boton-volver">← Volver</a>
+        </div>
+
+        <!-- Formulario de usuario - usa /guardar para nuevo, /actualizar para editar -->
+        <div class="contenedor-formulario">
+            <form th:action="${usuario.idUsuario != 0} ? @{/usuarios/actualizar} : @{/usuarios/guardar}"
+                  th:object="${usuario}"
+                  method="post">
+
+                <!-- Campo oculto con el ID (necesario para actualizar) -->
+                <input type="hidden" th:field="*{idUsuario}">
+
+                <!-- Campo Nombre -->
+                <div class="campo-formulario">
+                    <label for="nombreUsuario">Nombre *</label>
+                    <input type="text"
+                           id="nombreUsuario"
+                           th:field="*{nombreUsuario}"
+                           placeholder="Ingrese el nombre"
+                           required>
+                </div>
+
+                <!-- Campo Apellido -->
+                <div class="campo-formulario">
+                    <label for="apellidoUsuario">Apellido *</label>
+                    <input type="text"
+                           id="apellidoUsuario"
+                           th:field="*{apellidoUsuario}"
+                           placeholder="Ingrese el apellido"
+                           required>
+                </div>
+
+                <!-- Campo Correo -->
+                <div class="campo-formulario">
+                    <label for="correoUsuario">Correo electrónico *</label>
+                    <input type="email"
+                           id="correoUsuario"
+                           th:field="*{correoUsuario}"
+                           placeholder="correo@ejemplo.com"
+                           required>
+                </div>
+
+                <!-- Campo Contraseña -->
+                <div class="campo-formulario">
+                    <label for="contrasenaUsuario">Contraseña *</label>
+                    <input type="password"
+                           id="contrasenaUsuario"
+                           th:field="*{contrasenaUsuario}"
+                           placeholder="Ingrese la contraseña"
+                           required>
+                </div>
+
+                <!-- Campo Rol -->
+                <div class="campo-formulario">
+                    <label for="rolUsuario">Rol *</label>
+                    <select id="rolUsuario" th:field="*{rolUsuario}" required>
+                        <option value="">-- Seleccione un rol --</option>
+                        <option value="ADMIN">Administrador</option>
+                        <option value="OPERADOR">Operador</option>
+                        <option value="CONSULTA">Consulta</option>
+                    </select>
+                </div>
+
+                <!-- Campo Estado -->
+                <div class="campo-formulario">
+                    <label for="estadoUsuario">Estado *</label>
+                    <select id="estadoUsuario" th:field="*{estadoUsuario}" required>
+                        <option value="">-- Seleccione un estado --</option>
+                        <option value="ACTIVO">Activo</option>
+                        <option value="INACTIVO">Inactivo</option>
+                    </select>
+                </div>
+
+                <!-- Botones del formulario -->
+                <div class="botones-formulario">
+                    <button type="submit" class="boton-guardar"
+                            th:text="${accion}">Guardar</button>
+                    <a th:href="@{/usuarios}" class="boton-cancelar">Cancelar</a>
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+
+    <footer class="pie-pagina">
+        <p>SIGA v1.0 &copy; 2026 | Elías Farak GRUPO N° 5 | SENA ADSO</p>
+    </footer>
+
+</body>
+</html>
